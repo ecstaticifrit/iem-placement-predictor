@@ -17,8 +17,8 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
     # Get the user inputs from the form
-    gender = float(request.form['dropdown1'])
-    b_10 = float(request.form['dropdown2'])
+    gender = int(request.form['dropdown1'])
+    b_10 = int(request.form['dropdown2'])
     b_12 = float(request.form['dropdown3'])
     adm_mode = float(request.form['dropdown4'])
     stream = int(request.form['dropdown5'])
@@ -28,18 +28,6 @@ def predict():
     back = float(request.form['input3'])
     gpa = float(request.form['input4'])
 
-    #convert to suitable data types
-    gender = int(gender)
-    p_10 = float(p_10)
-    p_12 = float(p_12)
-    gpa = float(gpa)
-    back = float(back)
-    adm_mode = float(adm_mode)
-    b_10 = int(b_10)
-    b_12 = float(b_12)
-
-    #stream
-    stream = int(stream)
 
     # Prepare the input data for prediction
     input = np.array([stream, gender, p_10, b_10, p_12, b_12, back, adm_mode, gpa])
